@@ -27,8 +27,11 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">All</li>
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
+
+
+                        {% for category in categories %}
+                        <li class="list-group-item">{{category.name}}</li>
+                        {% endfor %}
 
 
                         <a class="btn btn-dark btn-block btn-sm m-1" href="{% url 'add' %}">Add photo</a>
@@ -40,65 +43,22 @@
             <div class="col-md-9">
                 <div class="row">
 
+                    {% for snap in snaps %}
                     <div class="col-md-4">
                         <div class="card my-2">
-                            <img class="image-thumb">
-                            <img src="https://images.unsplash.com/photo-1626106576760-d64336d3fa5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" class="card-img-top" alt="...">
+                            <img class="image-thumbail" src="{{snap.image.url}}" alt="Card image cap">
 
                             <div class="card-body">
-                                <small>Category: Wedding</small>
+                                <small>Category: {{snap.category.name}}</small>
                             </div>
-                            <a href="{% url 'snap' 5 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                            <a href="{% url 'snap' snap.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                         </div>
                     </div>
+                    {% empty %}
+                    <h3>No photos...</h3>
+                    {% endfor %}
 
-                    <div class="col-md-4">
-                        <div class="card my-2">
-                            <img class="image-thumb">
-                            <img src="https://images.unsplash.com/photo-1626106576760-d64336d3fa5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" class="card-img-top" alt="...">
 
-                            <div class="card-body">
-                                <small>Category: Wedding</small>
-                            </div>
-                            <a href="{% url 'snap' 5 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card my-2">
-                            <img class="image-thumb">
-                            <img src="https://images.unsplash.com/photo-1626106576760-d64336d3fa5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <small>Category: Wedding</small>
-                            </div>
-                            <a href="{% url 'snap' 5 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card my-2">
-                            <img class="image-thumb">
-                            <img src="https://images.unsplash.com/photo-1626106576760-d64336d3fa5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <small>Category: Wedding</small>
-                            </div>
-                            <a href="{% url 'snap' 5 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card my-2">
-                            <img class="image-thumb">
-                            <img src="https://images.unsplash.com/photo-1626106576760-d64336d3fa5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" class="card-img-top" alt="...">
-
-                            <div class="card-body">
-                                <small>Category: Wedding</small>
-                            </div>
-                            <a href="{% url 'snap' 5 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
-                        </div>
-                    </div>
 
 
                 </div>
