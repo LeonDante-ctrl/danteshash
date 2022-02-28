@@ -1,4 +1,7 @@
-from email.mime import image
+import smtplib
+import mimetypes
+import email
+import email.mime.application
 from multiprocessing import context
 from django.shortcuts import render,redirect
 from .models import Category, Snaps
@@ -35,8 +38,8 @@ def addSnap(request):
             
         snap = Snaps.objects.create(
                 category=category,
-                name=data['description'],
-                image=image,
+                name=data['name'],
+                image='image',
             )
         return redirect('gallery')
        # print('data:', data)
